@@ -1,9 +1,10 @@
-version: "3.8"
+version: '3.8'
 
 services:
   api-gateway:
     build: ./api-gateway
-    ports: -"3000:3000"
+    ports:
+      - "3000:3000"
     env_file: ./api-gateway/.env
     depends_on:
       - redis
@@ -54,14 +55,16 @@ services:
 
   redis:
     image: redis:alpine
-    ports: -"6379:6379"
+    ports:
+      - "6379:6379"
 
   rabbitmq:
     image: rabbitmq:3-management
-    ports: -"5672:5672"
-      -"15672:15672"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      test: [ "CMD", "rabbitmq-diagnostics", "-q", "ping" ]
       interval: 30s
       timeout: 10s
       retries: 5
