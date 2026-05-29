@@ -1,5 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 const logger = require("./logger");
+require("dotenv").config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
